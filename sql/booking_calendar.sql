@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS booked_dates (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  start_date DATE NOT NULL,
+  end_date DATE NOT NULL
+);
+
+ALTER TABLE booked_dates ADD COLUMN source VARCHAR(20) NOT NULL DEFAULT 'unknown';

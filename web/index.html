@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>El Rinconcito en Costa Ballena — Apartamento de lujo frente al mar</title>
+<meta name="description" content="Apartamento boutique de alquiler en Costa Ballena, Cádiz. Jardín privado, piscina, a pasos de la playa. Reserva directa." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbfaf5;--fg:#1c1f26;--muted:#6b7078;--border:#e6e2d6;
+    --card:#ffffff;--primary:#1c1f26;--primary-fg:#fbfaf5;
+    --gold:#c9a24a;--sand:#efe8d6;--ocean:#3a6b8a;
+    --serif:"Cormorant Garamond",serif;--sans:"Inter",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:clip}
+  img{display:block;max-width:100%}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-height:1.1}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+  .eyebrow{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 32px;font-size:11px;letter-spacing:.25em;text-transform:uppercase;transition:.3s;cursor:pointer;border:none}
+  .btn-gold{background:var(--gold);color:var(--primary)}
+  .btn-gold:hover{background:#b8912f}
+  .btn-outline{border:1px solid rgba(255,255,255,.4);color:#fff}
+  .btn-outline:hover{background:rgba(255,255,255,.1)}
+  .btn-dark{background:var(--primary);color:var(--primary-fg)}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  header.nav{position:fixed;inset:0 0 auto 0;z-index:50;padding:24px 0;transition:.5s;color:#fff}
+  header.nav.scrolled{background:rgba(251,250,245,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(230,226,214,.5);padding:14px 0;color:var(--fg)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;flex-direction:column;line-height:1}
+  .brand-name{font-family:var(--serif);font-size:22px}
+  .brand-sub{font-size:10px;letter-spacing:.3em;text-transform:uppercase;margin-top:4px;opacity:.75}
+  .nav-links{display:none;gap:32px;font-size:14px}
+  .nav-links a:hover{color:var(--gold)}
+  @media(min-width:900px){.nav-links{display:flex}}
+
+  /* HERO */
+  .hero{position:relative;height:100svh;overflow:hidden}
+  .hero-bg{position:absolute;inset:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.05)}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.4),rgba(0,0,0,.2) 40%,rgba(0,0,0,.7))}
+  .hero-inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:0 24px}
+  .hero h1{font-size:clamp(48px,8vw,110px);max-width:900px;margin-top:24px}
+  .hero p{margin-top:24px;max-width:560px;font-size:17px;color:rgba(255,255,255,.85)}
+  .hero-cta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.7);z-index:2}
+
+  /* INTRO */
+  .intro{padding:128px 24px}
+  .intro-grid{max-width:960px;margin:0 auto;display:grid;gap:64px}
+  @media(min-width:800px){.intro-grid{grid-template-columns:1fr 1fr}}
+  .intro h2{font-size:clamp(32px,4vw,48px);margin-top:16px}
+  .intro-copy{color:var(--muted);line-height:1.75;display:flex;flex-direction:column;gap:24px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:24px;border-top:1px solid var(--border)}
+  .stat-n{font-family:var(--serif);font-size:32px;color:var(--fg)}
+  .stat-l{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+  /* JOURNEY (horizontal scroll) */
+  .journey{position:relative;background:var(--primary);color:var(--primary-fg)}
+  .journey-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+  .journey-track{display:flex;height:100%;will-change:transform}
+  .scene{position:relative;flex:0 0 100vw;height:100%;display:flex;align-items:center;justify-content:center}
+  .scene img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .scene::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8),rgba(0,0,0,.2) 40%,rgba(0,0,0,.5))}
+  .scene-copy{position:relative;z-index:2;max-width:600px;padding:0 32px;text-align:center;color:#fff}
+  .scene-tag{font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .scene h3{font-size:clamp(36px,6vw,72px);margin-bottom:24px}
+  .scene p{font-size:18px;color:rgba(255,255,255,.85);font-weight:300}
+  .journey-title{position:absolute;top:32px;left:50%;transform:translateX(-50%);z-index:3;font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold)}
+  .journey-dots{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:6px}
+  .journey-dots span{height:1px;width:32px;background:rgba(255,255,255,.3);transition:.5s}
+  .journey-dots span.on{width:40px;background:var(--gold)}
+
+  /* GALLERY */
+  .gallery{padding:128px 24px;background:rgba(239,232,214,.4)}
+  .gallery-head{display:flex;flex-direction:column;gap:24px;margin-bottom:48px}
+  @media(min-width:800px){.gallery-head{flex-direction:row;align-items:flex-end;justify-content:space-between}}
+  .gallery h2{font-size:clamp(32px,4vw,48px);margin-top:12px}
+  .filters{display:flex;gap:8px;flex-wrap:wrap}
+  .filters button{padding:8px 16px;font-size:11px;letter-spacing:.25em;text-transform:uppercase;border:1px solid var(--border);transition:.2s}
+  .filters button.on{background:var(--primary);color:var(--primary-fg);border-color:var(--primary)}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:240px;gap:12px}
+  @media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
+  .tile{position:relative;overflow:hidden;cursor:pointer;background:#000}
+  .tile img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+  .tile:hover img{transform:scale(1.05)}
+  .tile-cap{position:absolute;inset:auto 0 0 0;padding:24px;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);color:#fff;opacity:0;transition:.3s}
+  .tile:hover .tile-cap{opacity:1}
+  .tile-cat{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+  .tile-title{font-family:var(--serif);font-size:20px;margin-top:4px}
+  .tile.wide{grid-column:span 2}.tile.tall{grid-row:span 2}
+
+  /* LIGHTBOX */
+  .lb{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;padding:24px}
+  .lb.on{display:flex}
+  .lb img{max-height:85vh;max-width:90vw;object-fit:contain}
+  .lb-x,.lb-nav{position:absolute;color:rgba(255,255,255,.7);font-size:32px;cursor:pointer;padding:16px}
+  .lb-x{top:16px;right:16px;font-size:24px}
+  .lb-nav.prev{left:16px}.lb-nav.next{right:16px}
+  .lb-caption{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:#fff}
+  .lb-caption b{font-family:var(--serif);font-weight:400;font-size:18px}
+  .lb-caption em{font-style:normal;margin-left:12px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+
+  /* AVAILABILITY */
+  .avail{padding:128px 24px}
+  .avail-grid{max-width:1100px;margin:0 auto;display:grid;gap:64px;align-items:start}
+  @media(min-width:900px){.avail-grid{grid-template-columns:1fr 1.2fr}}
+  .avail h2{font-size:clamp(32px,4vw,48px);margin-top:12px}
+  .avail p{margin-top:24px;color:var(--muted);line-height:1.75}
+  .legend{margin-top:32px;display:flex;gap:24px;flex-wrap:wrap;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .legend-item{display:flex;align-items:center;gap:8px}
+  .legend-sw{width:16px;height:16px;display:inline-block}
+  .cal{background:var(--card);border:1px solid var(--border);padding:32px}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+  .cal-head button{width:40px;height:40px;border:1px solid var(--border);transition:.2s}
+  .cal-head button:hover{border-color:var(--primary)}
+  .cal-month{font-family:var(--serif);font-size:24px;text-transform:capitalize}
+  .cal-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:8px}
+  .cal-dow div{text-align:center;padding:8px 0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+  .cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:14px;background:var(--bg);border:1px solid var(--border)}
+  .cal-day.past{background:#efeee9;color:rgba(107,112,120,.5);border-color:transparent}
+  .cal-day.booked{background:rgba(201,162,74,.8);color:var(--primary);border-color:transparent}
+  .cal-day.free:hover{border-color:var(--primary);cursor:pointer}
+
+  /* MAP */
+  .map{padding:128px 24px;background:var(--primary);color:var(--primary-fg)}
+  .map-grid{max-width:1200px;margin:0 auto;display:grid;gap:64px;align-items:center}
+  @media(min-width:900px){.map-grid{grid-template-columns:1fr 1fr}}
+  .map h2{font-size:clamp(32px,4vw,48px);margin-top:12px}
+  .map p{margin-top:24px;color:rgba(251,250,245,.7);line-height:1.75;max-width:440px}
+  .poi{margin-top:40px;display:flex;flex-direction:column;gap:16px}
+  .poi-row{display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.1)}
+  .poi-v{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+  .map-frame{aspect-ratio:4/5;width:100%;border:1px solid rgba(255,255,255,.1);overflow:hidden}
+  .map-frame iframe{width:100%;height:100%;border:0;filter:grayscale(1) contrast(1.25)}
+
+  /* REVIEWS */
+  .rev{padding:128px 24px}
+  .rev-head{text-align:center;margin-bottom:64px}
+  .rev h2{font-size:clamp(32px,4vw,48px);margin-top:12px}
+  .rev-score{margin-top:32px;display:inline-flex;align-items:center;gap:24px;border:1px solid var(--border);padding:20px 32px}
+  .rev-score .n{font-size:48px;font-family:var(--serif);color:var(--gold)}
+  .rev-score b{font-weight:500}
+  .rev-score em{font-style:normal;display:block;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .rev-grid{max-width:1100px;margin:0 auto;display:grid;gap:24px}
+  @media(min-width:800px){.rev-grid{grid-template-columns:1fr 1fr}}
+  .rev-card{background:var(--card);border:1px solid var(--border);padding:32px;transition:.3s}
+  .rev-card:hover{box-shadow:0 20px 50px -20px rgba(0,0,0,.1)}
+  .rev-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+  .rev-top .name{font-family:var(--serif);font-size:20px}
+  .rev-top .meta{font-size:12px;color:var(--muted);margin-top:4px}
+  .rev-top .badge{background:var(--gold);color:var(--primary);padding:6px 12px;font-weight:500;font-size:14px}
+  .rev-text{color:var(--muted);font-style:italic;line-height:1.75}
+  .rev-more{text-align:center;margin-top:48px;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+  .rev-more a:hover{text-decoration:underline}
+
+  /* FOOTER */
+  footer{background:var(--primary);color:var(--primary-fg);padding:64px 24px;border-top:1px solid rgba(255,255,255,.05)}
+  .foot{max-width:1200px;margin:0 auto;display:grid;gap:40px}
+  @media(min-width:700px){.foot{grid-template-columns:repeat(3,1fr)}}
+  .foot p{margin-top:24px;font-size:14px;color:rgba(251,250,245,.6);max-width:280px}
+  .foot h4{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-family:var(--sans);font-weight:400}
+  .foot-c{font-size:14px;color:rgba(251,250,245,.8);display:flex;flex-direction:column;gap:8px}
+  .foot-b{max-width:1200px;margin:64px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(251,250,245,.4)}
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s,transform .9s}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-name">RINCONCITO</span>
+      <span class="brand-sub">Costa Ballena</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#experience">Experiencia</a>
+      <a href="#gallery">Galería</a>
+      <a href="#availability">Disponibilidad</a>
+      <a href="#location">Ubicación</a>
+      <a href="#reviews">Reseñas</a>
+    </nav>
+    <a class="btn btn-gold" href="https://www.booking.com/hotel/es/relax-en-costa-ballena.es.html?chal_t=1783843569113&force_referer=https%3A%2F%2Fwww.google.com%2F#tab-main" target="_blank" rel="noopener">Reservar</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg"><img src="images/aerial.jpg" alt="Vista aérea Costa Ballena"></div>
+  <div class="hero-inner">
+    <span class="eyebrow" style="color:var(--gold)">Alquiler boutique · Cádiz</span>
+    <h1>RINCONCITO<br>en Costa Ballena</h1>
+    <p>Un refugio bañado de luz, a un paseo del Atlántico. Jardín privado, piscina y el descanso perfecto en la costa gaditana.</p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#availability">Ver disponibilidad</a>
+      <a class="btn btn-outline" href="#experience">Descubrir</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Desliza para entrar ↓</div>
+</section>
+
+<section class="intro reveal" id="experience">
+  <div class="intro-grid">
+    <div>
+      <span class="eyebrow">La experiencia</span>
+      <h2>Un rincón íntimo, frente al Atlántico.</h2>
+    </div>
+    <div class="intro-copy">
+      <p>Escondido en la exclusiva urbanización Ocean de Costa Ballena, este apartamento boutique combina el diseño contemporáneo con la calidez mediterránea. Dos dormitorios, jardín privado y acceso directo a la piscina.</p>
+      <p>A cinco minutos a pie de una de las playas más limpias de Andalucía, es el punto de partida perfecto para descubrir Cádiz sin renunciar al confort de una casa cuidada hasta el último detalle.</p>
+      <div class="stats">
+        <div><div class="stat-n">2</div><div class="stat-l">Dormitorios</div></div>
+        <div><div class="stat-n">2</div><div class="stat-l">Baños</div></div>
+        <div><div class="stat-n">4</div><div class="stat-l">Huéspedes</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="journey" id="journey">
+  <div class="journey-sticky">
+    <div class="journey-title">Un paseo por El Rinconcito</div>
+    <div class="journey-track" id="track"></div>
+    <div class="journey-dots" id="dots"></div>
+  </div>
+</section>
+
+<section class="gallery reveal" id="gallery">
+  <div class="wrap">
+    <div class="gallery-head">
+      <div>
+        <span class="eyebrow">Galería</span>
+        <h2>Cada estancia, cada detalle.</h2>
+      </div>
+      <div class="filters" id="filters"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<div class="lb" id="lb">
+  <button class="lb-x" onclick="closeLb()">✕</button>
+  <button class="lb-nav prev" onclick="navLb(-1)">‹</button>
+  <button class="lb-nav next" onclick="navLb(1)">›</button>
+  <img id="lb-img" alt="">
+  <div class="lb-caption"><b id="lb-t"></b><em id="lb-n"></em></div>
+</div>
+
+<section class="avail reveal" id="availability">
+  <div class="avail-grid">
+    <div>
+      <span class="eyebrow">Disponibilidad</span>
+      <h2>Consulta las fechas libres.</h2>
+      <p>Calendario sincronizado con nuestro anuncio en Booking.com. Los días en tono cálido están reservados; los días claros están disponibles para tu escapada.</p>
+      <div class="legend">
+        <div class="legend-item"><span class="legend-sw" style="background:var(--bg);border:1px solid var(--border)"></span>Disponible</div>
+        <div class="legend-item"><span class="legend-sw" style="background:rgba(201,162,74,.8)"></span>Reservado</div>
+        <div class="legend-item"><span class="legend-sw" style="background:#efeee9"></span>Pasado</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-top:40px">
+        <a href="https://www.booking.com/hotel/es/relax-en-costa-ballena.es.html?aid=2336990&label=en-es-booking-desktop-aTVqOkTLqcsVP16R70Y%2AbQS652804038434%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-46257546822%3Alp9214024%3Ali%3Adec%3Adm&sid=3ccb64f971b347524bc323b24d6fe3eb&all_sr_blocks=1342982401_428621025_0_0_0&checkin=2026-07-31&checkout=2026-08-01&dest_id=-379081&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=6&highlighted_blocks=1342982401_428621025_0_0_0&hpos=6&matching_block_id=1342982401_428621025_0_0_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=1342982401_428621025_0_0_0__38880&srepoch=1784279931&srpvid=557a4179bc1f01b8&type=total&ucfs=1&" target="_blank" rel="noopener" class="btn btn-dark">Reservar en Booking →</a>
+        <a href="https://www.airbnb.es/rooms/1343440075724960634?search_mode=regular_search&adults=1&check_in=2026-09-14&check_out=2026-09-19&children=0&infants=0&pets=0&source_impression_id=p3_1784279531_P35MAuInUIiQrbTh&previous_page_section_name=1000&federated_search_id=6f2d85fc-1fbf-4067-877f-53a08e7e5bb4" target="_blank" rel="noopener" class="btn btn-dark">Reservar en Airbnb →</a>
+        <a href="https://www.vrbo.com/es-es/p11778067?dateless=true&x_pwa=1&rfrr=HSR&pwa_ts=1784280042825&referrerUrl=aHR0cHM6Ly93d3cudnJiby5jb20vSG90ZWwtU2VhcmNo&useRewards=false&adults=2&regionId=6048411&destination=Chipiona%2C+Andaluc%C3%ADa%2C+Espa%C3%B1a&destType=BOUNDING_BOX&latLong=36.734863%2C-6.431699&searchId=95704123-2468-46bc-bdf6-61edf0fbb5c3&sort=RECOMMENDED&userIntent=&expediaPropertyId=113322427" target="_blank" rel="noopener" class="btn btn-dark">Reservar en Vrbo →</a>
+        <a href="https://www.hometogo.es/rental/50455799bab9d5cd?location=553cf19310855&persons=2&adults=2&id=50455799bab9d5cd&pricetype=totalPrice&dp=0&clickId=4XTGY6D85DFTGP0G&sT=dateless&prodName=JM&prodSource=Search&searchId=e061a2e3bed94b46&screen=search&priceRate=nonRefund" target="_blank" rel="noopener" class="btn btn-dark">Reservar en HomeToGo →</a>
+        <a href="https://thehomecake.com/alojamientos/rinconcito-en-costa-ballena/" target="_blank" rel="noopener" class="btn btn-dark">Reservar en TheHomeCake →</a>
+      </div>
+    
+    </div>
+    <div class="cal">
+      <div class="cal-head">
+        <button onclick="chMonth(-1)">‹</button>
+        <div class="cal-month" id="cal-month"></div>
+        <button onclick="chMonth(1)">›</button>
+      </div>
+      <div class="cal-dow"><div>L</div><div>M</div><div>X</div><div>J</div><div>V</div><div>S</div><div>D</div></div>
+      <div class="cal-days" id="cal-days"></div>
+    </div>
+  </div>
+</section>
+
+<section class="map reveal" id="location">
+  <div class="map-grid">
+    <div>
+      <span class="eyebrow">Ubicación</span>
+      <h2>Costa Ballena,<br>Rota — Cádiz.</h2>
+      <p>En el corazón de la urbanización Ocean, entre la playa de Costa Ballena y el campo de golf. A 15 minutos de Rota y 40 minutos del centro de Cádiz.</p>
+      <div class="poi">
+        <div class="poi-row"><span>Playa de las Tres Piedras</span><span class="poi-v">5 min a pie</span></div>
+        <div class="poi-row"><span>Chiringuito Chinini Beach</span><span class="poi-v">6 min a pie</span></div>
+        <div class="poi-row"><span>Chiringuito Ohana</span><span class="poi-v">8 min a pie</span></div>
+        <div class="poi-row"><span>Costa Ballena Ocean Club Golf</span><span class="poi-v">4 min en coche</span></div>
+        <div class="poi-row"><span>Aeropuerto de Jerez</span><span class="poi-v">30 min en coche</span></div>
+      </div>
+    </div>
+    <div class="map-frame">
+      <iframe loading="lazy" title="Mapa" src="https://www.openstreetmap.org/export/embed.html?bbox=-6.4353%2C36.6867%2C-6.4053%2C36.7117&layer=mapnik&marker=36.699167,-6.420306"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="rev reveal" id="reviews">
+  <div class="rev-head">
+    <span class="eyebrow">Reseñas de Booking</span>
+    <h2>Puntuación de los huéspedes</h2>
+    <div class="rev-score">
+      <div class="n" id="rev-avg">9.6</div>
+      <div><b>Excepcional</b><em id="rev-count">11 opiniones verificadas</em></div>
+    </div>
+  </div>
+  <div class="rev-grid" id="rev-grid"></div>
+  <div class="rev-more"><a href="https://www.booking.com/hotel/es/relax-en-costa-ballena.es.html?chal_t=1783843569113&force_referer=https%3A%2F%2Fwww.google.com%2F#tab-reviews" target="_blank" rel="noopener">Ver todas las reseñas en Booking →</a></div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div>
+      <div style="font-family:var(--serif);font-size:24px">RINCONCITO</div>
+      <div style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-top:4px">Costa Ballena</div>
+      <p>Alquiler boutique en la urbanización Ocean, Costa Ballena, Cádiz.</p>
+    </div>
+    <div>
+  <h4>Contacto</h4>
+  <div class="foot-c"><div>dg.alquilercostaballena@gmail.com</div><div>+34 660 962 203</div></div>
+
+  <div style="margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1)">
+    <h4>Contacto creador</h4>
+    <div class="foot-c">
+      <a href="https://www.linkedin.com/in/carlos-durán-gallango-aaa6883aa/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <div>charliedg.dev@gmail.com</div>
+    </div>
+  </div>
+  </div>
+    <div>
+      <h4>Reservas</h4>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <a href="https://www.booking.com/hotel/es/relax-en-costa-ballena.es.html?aid=2336990&label=en-es-booking-desktop-aTVqOkTLqcsVP16R70Y%2AbQS652804038434%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-46257546822%3Alp9214024%3Ali%3Adec%3Adm&sid=3ccb64f971b347524bc323b24d6fe3eb&all_sr_blocks=1342982401_428621025_0_0_0&checkin=2026-07-31&checkout=2026-08-01&dest_id=-379081&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=6&highlighted_blocks=1342982401_428621025_0_0_0&hpos=6&matching_block_id=1342982401_428621025_0_0_0&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&sr_pri_blocks=1342982401_428621025_0_0_0__38880&srepoch=1784279931&srpvid=557a4179bc1f01b8&type=total&ucfs=1&" target="_blank" rel="noopener" style="font-size:14px">Booking.com →</a>
+        <a href="https://www.airbnb.es/rooms/1343440075724960634?search_mode=regular_search&adults=1&check_in=2026-09-14&check_out=2026-09-19&children=0&infants=0&pets=0&source_impression_id=p3_1784279531_P35MAuInUIiQrbTh&previous_page_section_name=1000&federated_search_id=6f2d85fc-1fbf-4067-877f-53a08e7e5bb4" target="_blank" rel="noopener" style="font-size:14px">Airbnb →</a>
+        <a href="https://www.vrbo.com/es-es/p11778067?dateless=true&x_pwa=1&rfrr=HSR&pwa_ts=1784280042825&referrerUrl=aHR0cHM6Ly93d3cudnJiby5jb20vSG90ZWwtU2VhcmNo&useRewards=false&adults=2&regionId=6048411&destination=Chipiona%2C+Andaluc%C3%ADa%2C+Espa%C3%B1a&destType=BOUNDING_BOX&latLong=36.734863%2C-6.431699&searchId=95704123-2468-46bc-bdf6-61edf0fbb5c3&sort=RECOMMENDED&userIntent=&expediaPropertyId=113322427" target="_blank" rel="noopener" style="font-size:14px">Vrbo →</a>
+        <a href="https://www.hometogo.es/rental/50455799bab9d5cd?location=553cf19310855&persons=2&adults=2&id=50455799bab9d5cd&pricetype=totalPrice&dp=0&clickId=4XTGY6D85DFTGP0G&sT=dateless&prodName=JM&prodSource=Search&searchId=e061a2e3bed94b46&screen=search&priceRate=nonRefund" target="_blank" rel="noopener" style="font-size:14px">HomeToGo →</a>
+        <a href="https://thehomecake.com/alojamientos/rinconcito-en-costa-ballena/" target="_blank" rel="noopener" style="font-size:14px">TheHomeCake →</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-b">
+    <div>© <span id="yr"></span> RINCONCITO en Costa Ballena</div>
+    <div>Hecho con cariño en Cádiz</div>
+  </div>
+</footer>
+
+<script>
+/* ---------------------------------------- Data ---------------------------------------- */
+const scenes = [
+  {img:"images/entrance.jpg",tag:"01 · Llegada",title:"Entrada a Ocean",copy:"Traspasas la puerta de la urbanización y el bullicio se apaga."},
+  {img:"images/aerial.jpg",tag:"02 · El complejo",title:"Piscina & jardines",copy:"Cuatro edificios curvos abrazan una piscina lagoon rodeada de palmeras."},
+  {img:"images/terrace2.jpg",tag:"03 · Fuera",title:"Tu terraza privada",copy:"Un comedor exterior bajo la sombra, césped propio y salida directa a la piscina."},
+  {img:"images/terrace1.jpg",tag:"04 · El lounge",title:"Sofás al sol",copy:"Un rincón para el aperitivo, la siesta y la última copa del día."},
+  {img:"images/living.jpg",tag:"05 · Dentro",title:"Salón luminoso",copy:"Suelos claros, luz natural constante y una decoración cálida y contemporánea."},
+  {img:"images/kitchen.jpg",tag:"06 · Cocina",title:"Abierta al jardín",copy:"Isla amplia, equipamiento premium y vistas al verde mientras cocinas."},
+  {img:"images/bedroom.jpg",tag:"07 · Descanso",title:"Dormitorio principal",copy:"Cama king, papel pintado botánico y salida directa al jardín."},
+  {img:"images/kids.jpg",tag:"08 · Familia",title:"Habitación de los peques",copy:"Dos camas, cuna disponible y una atmósfera fresca en tonos verde agua."},
+  {img:"images/beach.jpg",tag:"09 · Y afuera…",title:"La playa te espera",copy:"Cinco minutos por la pasarela de madera y ya estás con los pies en la arena."}
+];
+const gallery = [
+  {src:"images/aerial.jpg",title:"Urbanización Ocean",cat:"Exterior"},
+  {src:"images/entrance.jpg",title:"Entrada privada",cat:"Exterior"},
+  {src:"images/terrace2.jpg",title:"Terraza & jardín",cat:"Exterior"},
+  {src:"images/terrace1.jpg",title:"Lounge exterior",cat:"Exterior"},
+  {src:"images/living.jpg",title:"Salón luminoso",cat:"Interior"},
+  {src:"images/kitchen.jpg",title:"Cocina abierta",cat:"Interior"},
+  {src:"images/bedroom.jpg",title:"Dormitorio principal",cat:"Interior"},
+  {src:"images/kids.jpg",title:"Habitación infantil",cat:"Interior"},
+  {src:"images/bathroom.jpg",title:"Baño",cat:"Interior"},
+  {src:"images/bathroom2.jpg",title:"Baño Principal",cat:"Interior"},
+  {src:"images/beach.jpg",title:"Playa Costa Ballena",cat:"Entorno"}
+];
+const reviews = [
+  {name:"Maria",country:"🇪🇸 España",score:10,date:"Mayo 2026",text:"Todo. Genial el apartamento. No le falta un detalle. Muy bien ubicado. La anfitriona Pilar estupenda. Súper amable. Nos ha encantado volveremos sin duda."},
+  {name:"Carlos",country:"🇪🇸 España",score:10,date:"Mayo 2026",text:"Era, simplemente, perfecto"},
+  {name:"Inma",country:"🇪🇸 España",score:10,date:"Agosto 2025",text:"La ubicación muy próxima a la playa, la comodidad de las camas y la tranquilidad de la urbanización.  El alojamiento dispone del menaje necesario, de lavadora y de plaza de aparcamiento.  Hemos disfrutado mucho los días que hemos estado. Muchas gracias Pilar!"},
+  {name:"Lorena",country:"🇪🇸 España",score:10,date:"Abril 2026",text:"La amabilidad de Pilar, empatizar con su huéspedes , hacer que la estancia sea “sentirse en casa”  No le falta detalle. Café, agua , cava de bienvenida… y así un largo etcétera que solo valoras cuando en otros lugares no te han dejado ni agua para tu llegada.  Muchas gracias Pilar, volveremos"}
+];
+
+/* ---------------------------------------- Nav scroll ---------------------------------------- */
+addEventListener("scroll",()=>{document.getElementById("nav").classList.toggle("scrolled",scrollY>40)});
+
+/* ---------------------------------------- Journey ---------------------------------------- */
+const track=document.getElementById("track"),dots=document.getElementById("dots");
+scenes.forEach((s,i)=>{
+  const el=document.createElement("div");el.className="scene";
+  el.innerHTML=`<img src="${s.img}" alt="${s.title}"><div class="scene-copy"><div class="scene-tag">${s.tag}</div><h3>${s.title}</h3><p>${s.copy}</p></div>`;
+  track.appendChild(el);
+  const d=document.createElement("span");if(i===0)d.classList.add("on");dots.appendChild(d);
+});
+const journey=document.getElementById("journey");
+journey.style.height=(scenes.length*100)+"vh";
+function updateJourney(){
+  const r=journey.getBoundingClientRect();
+  const total=journey.offsetHeight-innerHeight;
+  const p=Math.min(Math.max(-r.top/total,0),1);
+  const hold=0.06;
+  const t=Math.min(Math.max((p-hold)/(1-hold*2),0),1);
+  const shift=t*(scenes.length-1)*100;
+  track.style.transform=`translate3d(-${shift}vw,0,0)`;
+  const idx=Math.min(scenes.length-1,Math.floor(t*scenes.length));
+  [...dots.children].forEach((d,i)=>d.classList.toggle("on",i===idx));
+}
+addEventListener("scroll",updateJourney,{passive:true});addEventListener("resize",updateJourney);updateJourney();
+
+/* ---------------------------------------- Gallery + filters ---------------------------------------- */
+const cats=["Todo","Interior","Exterior","Entorno"];
+const filters=document.getElementById("filters"),grid=document.getElementById("grid");
+let curFilter="Todo";
+cats.forEach(c=>{const b=document.createElement("button");b.textContent=c;if(c===curFilter)b.classList.add("on");b.onclick=()=>{curFilter=c;[...filters.children].forEach(x=>x.classList.toggle("on",x.textContent===c));renderGrid()};filters.appendChild(b)});
+function renderGrid(){
+  grid.innerHTML="";
+  gallery.filter(g=>curFilter==="Todo"||g.cat===curFilter).forEach((g,i)=>{
+    const idx=gallery.indexOf(g);
+    const t=document.createElement("div");t.className="tile"+(i%5===0?" tall":"")+(i%7===0?" wide":"");
+    t.innerHTML=`<img src="${g.src}" alt="${g.title}" loading="lazy"><div class="tile-cap"><div class="tile-cat">${g.cat}</div><div class="tile-title">${g.title}</div></div>`;
+    t.onclick=()=>openLb(idx);
+    grid.appendChild(t);
+  });
+}
+renderGrid();
+
+/* Lightbox */
+const lb=document.getElementById("lb"),lbImg=document.getElementById("lb-img"),lbT=document.getElementById("lb-t"),lbN=document.getElementById("lb-n");
+let lbIdx=0;
+function openLb(i){lbIdx=i;drawLb();lb.classList.add("on")}
+function closeLb(){lb.classList.remove("on")}
+function navLb(d){lbIdx=(lbIdx+d+gallery.length)%gallery.length;drawLb()}
+function drawLb(){const g=gallery[lbIdx];lbImg.src=g.src;lbT.textContent=g.title;lbN.textContent=(lbIdx+1)+" / "+gallery.length}
+lb.addEventListener("click",e=>{if(e.target===lb)closeLb()});
+addEventListener("keydown",e=>{if(!lb.classList.contains("on"))return;if(e.key==="Escape")closeLb();if(e.key==="ArrowRight")navLb(1);if(e.key==="ArrowLeft")navLb(-1)});
+
+
+/* ---------------------------------------- Calendar ---------------------------------------- */
+const booked = new Set();
+let mOff = 0;
+
+async function fetchBookingCalendar() {
+  try {
+    const response = await fetch('/api/v1/booked-dates');
+    if (!response.ok) throw new Error("Error al obtener las reservas");
+
+    const ranges = await response.json();
+
+    ranges.forEach(r => {
+      // Convertimos "YYYY-MM-DD" a "YYYYMMDD" para reutilizar addDatesToBookedSet tal cual
+      const start = r.start_date.replaceAll("-", "");
+      const end = r.end_date.replaceAll("-", "");
+      addDatesToBookedSet(start, end);
+    });
+
+    renderCal();
+  } catch (err) {
+    console.warn("No se pudo cargar el calendario:", err);
+  }
+}
+
+// Función auxiliar para calcular todos los días intermedios de una reserva
+function addDatesToBookedSet(start, end) {
+  const startYear = parseInt(start.substring(0, 4));
+  const startMonth = parseInt(start.substring(4, 6)) - 1;
+  const startDay = parseInt(start.substring(6, 8));
+  
+  const endYear = parseInt(end.substring(0, 4));
+  const endMonth = parseInt(end.substring(4, 6)) - 1;
+  const endDay = parseInt(end.substring(6, 8));
+  
+  let current = new Date(startYear, startMonth, startDay);
+  const checkoutDate = new Date(endYear, endMonth, endDay);
+  
+  // Añadimos al Set todos los días intermedios (el día de salida queda libre para entrar)
+  while (current < checkoutDate) {
+    const key = current.getFullYear() + "-" + String(current.getMonth() + 1).padStart(2, "0") + "-" + String(current.getDate()).padStart(2, "0");
+    booked.add(key);
+    current.setDate(current.getDate() + 1);
+  }
+}
+
+// Cambiar de mes
+function chMonth(d) {
+  mOff += d;
+  renderCal();
+}
+
+// Renderizar el calendario en el HTML
+function renderCal() {
+  const today = new Date();
+  const cur = new Date(today.getFullYear(), today.getMonth() + mOff, 1);
+  
+  // Actualizar el título del mes
+  document.getElementById("cal-month").textContent = cur.toLocaleDateString("es-ES", { month: "long", year: "numeric" });
+  
+  const dim = new Date(cur.getFullYear(), cur.getMonth() + 1, 0).getDate();
+  const first = (cur.getDay() + 6) % 7;
+  const c = document.getElementById("cal-days");
+  c.innerHTML = "";
+  
+  // Huecos vacíos antes del primer día del mes
+  for (let i = 0; i < first; i++) {
+    c.appendChild(document.createElement("div"));
+  }
+  
+  const t0 = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  
+  // Pintar los días del mes
+  for (let d = 1; d <= dim; d++) {
+    const el = document.createElement("div");
+    el.className = "cal-day";
+    el.textContent = d;
+    
+    const dObj = new Date(cur.getFullYear(), cur.getMonth(), d);
+    const key = cur.getFullYear() + "-" + String(cur.getMonth() + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0");
+    
+    if (dObj < t0) {
+      el.classList.add("past");
+    } else if (booked.has(key)) {
+      el.classList.add("booked");
+    } else {
+      el.classList.add("free");
+    }
+    c.appendChild(el);
+  }
+}
+
+// Inicialización: Pintamos el calendario vacío de inmediato para evitar cuelgues visuales
+renderCal();
+// Lanzamos la descarga rápida en segundo plano
+fetchBookingCalendar();
+
+/* ---------------------------------------- Reviews ---------------------------------------- */
+const avg=(reviews.reduce((a,r)=>a+r.score,0)/reviews.length).toFixed(1);
+document.getElementById("rev-avg").textContent=avg;
+const TOTAL_REVIEWS_BOOKING = 11; // total real de opiniones en Booking.com
+document.getElementById("rev-count").textContent = TOTAL_REVIEWS_BOOKING + " opiniones verificadas";
+const rg=document.getElementById("rev-grid");
+reviews.forEach(r=>{
+  const c=document.createElement("div");c.className="rev-card";
+  c.innerHTML=`<div class="rev-top"><div><div class="name">${r.name}</div><div class="meta">${r.country} · ${r.date}</div></div><div class="badge">${r.score}</div></div><p class="rev-text">"${r.text}"</p>`;
+  rg.appendChild(c);
+});
+
+/* Reveal on scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

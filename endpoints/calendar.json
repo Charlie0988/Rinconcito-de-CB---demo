@@ -1,0 +1,8 @@
+{
+  "getBookedDates": {
+    "route": "/booked-dates",
+    "method": "GET",
+    "sql": "SELECT start_date, end_date FROM booked_dates",
+    "description": "Fechas reservadas según Booking.com"
+  }
+}

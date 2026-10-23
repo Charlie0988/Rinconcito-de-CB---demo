@@ -1,0 +1,60 @@
+{
+    "getAll": {
+        "description": "Gets all entries from 'booked_dates'",
+        "route": "/booked_dates",
+        "method": "GET",
+        "sql": "SELECT * FROM booked_dates",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "getById": {
+        "description": "Gets an entry from 'booked_dates' by its primary key",
+        "route": "/booked_dates/$id",
+        "method": "GET",
+        "sql": "SELECT * FROM booked_dates WHERE id = $id",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "create": {
+        "description": "Creates a new entry in 'booked_dates'",
+        "route": "/booked_dates",
+        "method": "POST",
+        "sql": "INSERT INTO booked_dates (start_date, end_date) VALUES ($start_date, $end_date)",
+        "request_body_params": [
+            "start_date",
+            "end_date"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "update": {
+        "description": "Updates an existing entry in 'booked_dates' by its primary key",
+        "route": "/booked_dates/$id",
+        "method": "PUT",
+        "sql": "UPDATE booked_dates SET start_date = $start_date, end_date = $end_date WHERE id = $id",
+        "request_body_params": [
+            "start_date",
+            "end_date"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "delete": {
+        "description": "Deletes an existing entry in 'booked_dates' by its primary key",
+        "route": "/booked_dates/$id",
+        "method": "DELETE",
+        "sql": "DELETE FROM booked_dates WHERE id = $id",
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    }
+}
